@@ -16,3 +16,7 @@ public class LogEntry {
         this.message = message;
         this.source = source;
     }
+
+    // Getters
+    public LocalDateTime getTimestamp() { return timestamp; }
+    public String getLevel() { return level; }
