@@ -22,3 +22,9 @@ public class LogEntry {
     public String getLevel() { return level; }
     public String getMessage() { return message; }
     public String getSource() { return source; }
+
+    // Setters
+    public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
+    public void setLevel(String level) { this.level = level; }
+    public void setMessage(String message) { this.message = message; }
+    public void setSource(String source) { this.source = source; }
