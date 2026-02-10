@@ -20,3 +20,5 @@ public class LogEntry {
     // Getters
     public LocalDateTime getTimestamp() { return timestamp; }
     public String getLevel() { return level; }
+    public String getMessage() { return message; }
+    public String getSource() { return source; }
