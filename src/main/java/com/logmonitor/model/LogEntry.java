@@ -28,3 +28,9 @@ public class LogEntry {
     public void setLevel(String level) { this.level = level; }
     public void setMessage(String message) { this.message = message; }
     public void setSource(String source) { this.source = source; }
+
+    @Override
+    public String toString() {
+        return "[" + timestamp + "] " + level + " : " + message + " (" + source + ")";
+    }
+}
