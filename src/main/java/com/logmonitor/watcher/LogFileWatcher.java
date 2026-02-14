@@ -6,3 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+public class LogFileWatcher {
+    private static final String LOG_FILE = "logs/sample-app.log";
