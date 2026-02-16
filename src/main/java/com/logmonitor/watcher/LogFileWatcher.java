@@ -14,3 +14,7 @@ public class LogFileWatcher {
         try (BufferedReader br = new BufferedReader(new FileReader(LOG_FILE))) {
             String line;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(" ", 3); // timestamp, level, message
+                LocalDateTime timestamp = LocalDateTime.parse(parts[0] + " " + parts[1], formatter);
