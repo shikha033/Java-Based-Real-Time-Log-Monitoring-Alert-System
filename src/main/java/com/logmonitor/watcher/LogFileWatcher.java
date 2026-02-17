@@ -20,3 +20,7 @@ public class LogFileWatcher {
                 LocalDateTime timestamp = LocalDateTime.parse(parts[0] + " " + parts[1], formatter);
                 String level = parts[2].split(" ")[0];
                 String message = parts[2].substring(level.length()).trim();
+
+                LogEntry log = new LogEntry(timestamp, level, message, "Application");
+                System.out.println(log);
+            }
