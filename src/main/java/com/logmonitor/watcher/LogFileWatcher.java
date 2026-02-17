@@ -18,3 +18,5 @@ public class LogFileWatcher {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(" ", 3); // timestamp, level, message
                 LocalDateTime timestamp = LocalDateTime.parse(parts[0] + " " + parts[1], formatter);
+                String level = parts[2].split(" ")[0];
+                String message = parts[2].substring(level.length()).trim();
