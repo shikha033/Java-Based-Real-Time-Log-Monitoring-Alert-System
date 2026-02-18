@@ -24,3 +24,8 @@ public class LogFileWatcher {
                 LogEntry log = new LogEntry(timestamp, level, message, "Application");
                 System.out.println(log);
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
