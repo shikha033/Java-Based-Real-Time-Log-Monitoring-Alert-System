@@ -29,3 +29,9 @@ public class LogFileWatcher {
             e.printStackTrace();
         }
     }
+
+    public static void main(String[] args) {
+        LogFileWatcher watcher = new LogFileWatcher();
+        watcher.readLogs();
+    }
+}
