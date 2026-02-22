@@ -40,13 +40,21 @@
 package com.logmonitor.watcher;
 
 import com.logmonitor.model.LogEntry;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class LogFileWatcher implements Runnable {
+
     private static final String LOG_FILE = "logs/sample-app.log";
+    private volatile boolean running = true;
+
+    @Override
+    public void run() {
+        try (RandomAccessFile file = new RandomAccessFile(LOG_FILE, "r")) {
+
 
     public void readLogs() {
         try (BufferedReader br = new BufferedReader(new FileReader(LOG_FILE))) {
