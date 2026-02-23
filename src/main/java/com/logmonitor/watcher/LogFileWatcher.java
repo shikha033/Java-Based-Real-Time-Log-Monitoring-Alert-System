@@ -55,10 +55,9 @@ public class LogFileWatcher implements Runnable {
     public void run() {
         try (RandomAccessFile file = new RandomAccessFile(LOG_FILE, "r")) {
 
+            long filePointer = file.length(); // Start at end of file
+            file.seek(filePointer);
 
-    public void readLogs() {
-        try (BufferedReader br = new BufferedReader(new FileReader(LOG_FILE))) {
-            String line;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
             while ((line = br.readLine()) != null) {
