@@ -60,8 +60,7 @@ public class LogFileWatcher implements Runnable {
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-                String level = parts[2].split(" ")[0];
-                String message = parts[2].substring(level.length()).trim();
+            while (running) {
 
                 LogEntry log = new LogEntry(timestamp, level, message, "Application");
                 System.out.println(log);
