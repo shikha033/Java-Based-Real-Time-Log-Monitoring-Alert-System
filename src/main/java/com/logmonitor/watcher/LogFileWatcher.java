@@ -62,8 +62,6 @@ public class LogFileWatcher implements Runnable {
 
             while (running) {
 
-                LogEntry log = new LogEntry(timestamp, level, message, "Application");
-                System.out.println(log);
             }
 
         } catch (IOException e) {
