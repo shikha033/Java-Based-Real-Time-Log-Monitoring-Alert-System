@@ -62,6 +62,11 @@ public class LogFileWatcher implements Runnable {
 
             while (running) {
 
+                long fileLength = file.length();
+
+                if (fileLength > filePointer) {
+                    file.seek(filePointer);
+                    String line;
             }
 
         } catch (IOException e) {
