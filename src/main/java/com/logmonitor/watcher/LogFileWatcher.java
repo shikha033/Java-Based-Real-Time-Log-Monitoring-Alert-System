@@ -69,9 +69,14 @@ public class LogFileWatcher implements Runnable {
                     String line;
                      AlertService alertService = new AlertService();
                     while ((line = file.readLine()) != null) {
+
+                    filePointer = file.getFilePointer();
+                }
+
+                Thread.sleep(2000); // Check every 2 seconds
             }
 
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
