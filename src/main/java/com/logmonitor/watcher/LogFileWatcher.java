@@ -40,6 +40,7 @@
 package com.logmonitor.watcher;
 
 import com.logmonitor.model.LogEntry;
+import com.logmonitor.alert.AlertService;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -70,9 +71,11 @@ public class LogFileWatcher implements Runnable {
                      AlertService alertService = new AlertService();
                     while ((line = file.readLine()) != null) {
 
+                        String[] parts = line.split(" ", 3);
 
                         LocalDateTime timestamp = LocalDateTime.parse(
                                 parts[0] + " " + parts[1], formatter);
+
                         LogEntry log = new LogEntry(timestamp, level, message, "Application");
 
                         System.out.println("NEW LOG: " + log);
