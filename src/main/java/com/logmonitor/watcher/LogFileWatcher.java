@@ -59,7 +59,7 @@ public class LogFileWatcher implements Runnable {
             file.seek(filePointer);
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
+           
             while (running) {
 
                 long fileLength = file.length();
@@ -67,6 +67,8 @@ public class LogFileWatcher implements Runnable {
                 if (fileLength > filePointer) {
                     file.seek(filePointer);
                     String line;
+                     AlertService alertService = new AlertService();
+                    while ((line = file.readLine()) != null) {
             }
 
         } catch (IOException e) {
