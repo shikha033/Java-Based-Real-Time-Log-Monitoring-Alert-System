@@ -70,6 +70,12 @@ public class LogFileWatcher implements Runnable {
                      AlertService alertService = new AlertService();
                     while ((line = file.readLine()) != null) {
 
+                        LogEntry log = new LogEntry(timestamp, level, message, "Application");
+
+                        System.out.println("NEW LOG: " + log);
+                        alertService.processLog(log);
+                    }
+
                     filePointer = file.getFilePointer();
                 }
 
