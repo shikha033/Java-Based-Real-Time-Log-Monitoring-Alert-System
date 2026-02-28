@@ -8,3 +8,10 @@ public class Alert {
     private String message;
     private LocalDateTime triggeredAt;
     private String severity;
+
+    public Alert(String type, String message, LocalDateTime triggeredAt, String severity) {
+        this.type = type;
+        this.message = message;
+        this.triggeredAt = triggeredAt;
+        this.severity = severity;
+    }
