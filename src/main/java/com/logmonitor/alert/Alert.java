@@ -20,3 +20,11 @@ public class Alert {
     public String getMessage() { return message; }
     public LocalDateTime getTriggeredAt() { return triggeredAt; }
     public String getSeverity() { return severity; }
+
+    @Override
+    public String toString() {
+        return "ALERT [" + severity + "] " + type +
+               " - " + message +
+               " at " + triggeredAt;
+    }
+}
