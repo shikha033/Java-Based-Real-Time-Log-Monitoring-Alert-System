@@ -15,3 +15,8 @@ public class Alert {
         this.triggeredAt = triggeredAt;
         this.severity = severity;
     }
+
+    public String getType() { return type; }
+    public String getMessage() { return message; }
+    public LocalDateTime getTriggeredAt() { return triggeredAt; }
+    public String getSeverity() { return severity; }
