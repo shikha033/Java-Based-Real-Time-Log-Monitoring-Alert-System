@@ -9,3 +9,10 @@ public class AlertService {
     public void processLog(LogEntry logEntry) {
 
         if ("ERROR".equalsIgnoreCase(logEntry.getLevel())) {
+
+            Alert alert = new Alert(
+                    "APPLICATION_ERROR",
+                    logEntry.getMessage(),
+                    LocalDateTime.now(),
+                    "HIGH"
+            );
