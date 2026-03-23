@@ -16,3 +16,12 @@ public class AlertService {
                     LocalDateTime.now(),
                     "HIGH"
             );
+
+            triggerAlert(alert);
+        }
+    }
+
+    private void triggerAlert(Alert alert) {
+        System.out.println("🚨 " + alert);
+    }
+}
