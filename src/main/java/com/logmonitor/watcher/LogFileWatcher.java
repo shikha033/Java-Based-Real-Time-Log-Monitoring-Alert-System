@@ -98,10 +98,15 @@ public class LogFileWatcher implements Runnable {
 
     public void stop() {
         running = false;
+    }
+
     public static void main(String[] args) {
+
         LogFileWatcher watcher = new LogFileWatcher();
         Thread thread = new Thread(watcher);
 
         thread.start();
+
+        System.out.println("Real-time log monitoring started...");
     }
 }
