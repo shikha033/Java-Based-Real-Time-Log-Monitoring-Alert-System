@@ -21,3 +21,9 @@ public class DatabaseService {
     public void insertLog(LogEntry log) {
 
         String sql = "INSERT INTO logs (timestamp, level, message, source) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setObject(1, log.getTimestamp());
+            stmt.setString(2, log.getLevel());
+            stmt.setString(3, log.getMessage());
