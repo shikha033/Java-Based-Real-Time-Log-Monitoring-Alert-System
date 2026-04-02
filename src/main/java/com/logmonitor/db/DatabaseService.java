@@ -27,3 +27,7 @@ public class DatabaseService {
             stmt.setObject(1, log.getTimestamp());
             stmt.setString(2, log.getLevel());
             stmt.setString(3, log.getMessage());
+            stmt.setString(4, log.getSource());
+
+            stmt.executeUpdate();
+
