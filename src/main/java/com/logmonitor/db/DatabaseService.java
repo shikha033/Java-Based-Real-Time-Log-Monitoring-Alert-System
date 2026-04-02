@@ -1,4 +1,5 @@
 package com.logmonitor.db;
+
 import com.logmonitor.model.LogEntry;
 import com.logmonitor.alert.Alert;
 
@@ -16,3 +17,7 @@ public class DatabaseService {
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
+
+    public void insertLog(LogEntry log) {
+
+        String sql = "INSERT INTO logs (timestamp, level, message, source) VALUES (?, ?, ?, ?)";
