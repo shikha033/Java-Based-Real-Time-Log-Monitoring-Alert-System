@@ -42,3 +42,7 @@ public class DatabaseService {
         String sql = "INSERT INTO alerts (alert_type, description, triggered_at, severity) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, alert.getType());
+            stmt.setString(2, alert.getMessage());
