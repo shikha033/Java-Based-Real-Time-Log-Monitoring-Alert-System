@@ -36,3 +36,9 @@ public class DatabaseService {
             e.printStackTrace();
         }
     }
+
+    public void insertAlert(Alert alert) {
+
+        String sql = "INSERT INTO alerts (alert_type, description, triggered_at, severity) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = connect();
