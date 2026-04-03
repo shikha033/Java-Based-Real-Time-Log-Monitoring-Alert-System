@@ -24,6 +24,7 @@ public class DatabaseService {
 
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setObject(1, log.getTimestamp());
             stmt.setString(2, log.getLevel());
             stmt.setString(3, log.getMessage());
@@ -31,3 +32,7 @@ public class DatabaseService {
 
             stmt.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
