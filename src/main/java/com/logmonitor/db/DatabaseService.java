@@ -46,3 +46,13 @@ public class DatabaseService {
 
             stmt.setString(1, alert.getType());
             stmt.setString(2, alert.getMessage());
+            stmt.setObject(3, alert.getTriggeredAt());
+            stmt.setString(4, alert.getSeverity());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
