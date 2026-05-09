@@ -41,6 +41,7 @@ package com.logmonitor.watcher;
 
 import com.logmonitor.model.LogEntry;
 import com.logmonitor.alert.AlertService;
+import com.logmonitor.db.DatabaseService;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -54,13 +55,14 @@ public class LogFileWatcher implements Runnable {
 
     @Override
     public void run() {
+
         try (RandomAccessFile file = new RandomAccessFile(LOG_FILE, "r")) {
 
             long filePointer = file.length(); // Start at end of file
             file.seek(filePointer);
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-           
+            DateTimeFormatter formatter =
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             while (running) {
 
                 long fileLength = file.length();
