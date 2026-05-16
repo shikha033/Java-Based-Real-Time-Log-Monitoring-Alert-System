@@ -24,6 +24,11 @@ public class LogFileWatcher implements Runnable {
 
             DateTimeFormatter formatter =
                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+            // Services
+            AlertService alertService = new AlertService();
+            DatabaseService dbService = new DatabaseService();
+
             while (running) {
 
                 long fileLength = file.length();
