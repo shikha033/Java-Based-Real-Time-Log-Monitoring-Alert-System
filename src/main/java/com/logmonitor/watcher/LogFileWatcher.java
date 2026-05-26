@@ -34,29 +34,47 @@ public class LogFileWatcher implements Runnable {
                 long fileLength = file.length();
 
                 if (fileLength > filePointer) {
+
                     file.seek(filePointer);
+
                     String line;
-                     AlertService alertService = new AlertService();
+
                     while ((line = file.readLine()) != null) {
 
                         String[] parts = line.split(" ", 3);
 
                         LocalDateTime timestamp = LocalDateTime.parse(
-                                parts[0] + " " + parts[1], formatter);
+                                parts[0] + " " + parts[1],
+                                formatter
+                        );
 
                         String level = parts[2].split(" ")[0];
-                        String message = parts[2].substring(level.length()).trim();
 
-                        LogEntry log = new LogEntry(timestamp, level, message, "Application");
+                        String message =
+                                parts[2].substring(level.length()).trim();
 
+                        LogEntry log = new LogEntry(
+                                timestamp,
+                                level,
+                                message,
+                                "Application"
+                        );
+
+                        // Print log
                         System.out.println("NEW LOG: " + log);
+
+                        // Store log in database
+                        dbService.insertLog(log);
+
+                        // Process alert
                         alertService.processLog(log);
                     }
 
                     filePointer = file.getFilePointer();
                 }
 
-                Thread.sleep(2000); // Check every 2 seconds
+                // Check every 2 seconds
+                Thread.sleep(2000);
             }
 
         } catch (IOException | InterruptedException e) {
@@ -71,6 +89,7 @@ public class LogFileWatcher implements Runnable {
     public static void main(String[] args) {
 
         LogFileWatcher watcher = new LogFileWatcher();
+
         Thread thread = new Thread(watcher);
 
         thread.start();
