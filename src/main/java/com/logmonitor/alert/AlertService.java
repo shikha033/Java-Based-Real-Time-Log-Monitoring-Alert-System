@@ -9,6 +9,7 @@ public class AlertService {
 
    // added ---
     private DatabaseService dbService = new DatabaseService();
+
     public void processLog(LogEntry logEntry) {
 
         if ("ERROR".equalsIgnoreCase(logEntry.getLevel())) {
@@ -25,6 +26,10 @@ public class AlertService {
     }
 
     private void triggerAlert(Alert alert) {
+
         System.out.println("🚨 " + alert);
+
+        // ✅ ADD THIS
+        dbService.insertAlert(alert);
     }
 }
