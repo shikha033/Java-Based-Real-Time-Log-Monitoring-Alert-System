@@ -9,6 +9,8 @@ public class AlertService {
 
    // added ---
     private DatabaseService dbService = new DatabaseService();
+    private int errorCount = 0;
+    private long windowStartTime = System.currentTimeMillis();
 
     public void processLog(LogEntry logEntry) {
 
