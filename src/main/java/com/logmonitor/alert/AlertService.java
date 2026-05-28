@@ -14,7 +14,7 @@ public class AlertService {
 
     public void processLog(LogEntry logEntry) {
 
-        if ("ERROR".equalsIgnoreCase(logEntry.getLevel())) {
+    long currentTime = System.currentTimeMillis();
 
             Alert alert = new Alert(
                     "APPLICATION_ERROR",
