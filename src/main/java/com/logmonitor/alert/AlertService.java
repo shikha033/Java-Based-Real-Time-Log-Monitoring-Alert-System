@@ -16,9 +16,6 @@ public class AlertService {
 
     long currentTime = System.currentTimeMillis();
 
-            Alert alert = new Alert(
-                    "APPLICATION_ERROR",
-                    logEntry.getMessage(),
                     LocalDateTime.now(),
                     "HIGH"
             );
