@@ -16,6 +16,12 @@ public class AlertService {
 
     long currentTime = System.currentTimeMillis();
 
+    // Reset counter after 1 minute
+    if ((currentTime - windowStartTime) > 60000) {
+
+        errorCount = 0;
+        windowStartTime = currentTime;
+    }
                     LocalDateTime.now(),
                     "HIGH"
             );
