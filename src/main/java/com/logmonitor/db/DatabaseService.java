@@ -12,7 +12,7 @@ public class DatabaseService {
 
     private static final String URL = "jdbc:mysql://localhost:3306/logmonitor";
     private static final String USER = "root";
-    private static final String PASSWORD = "yourpassword";
+    private static final String PASSWORD = "Dd#81033pby";
 
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
