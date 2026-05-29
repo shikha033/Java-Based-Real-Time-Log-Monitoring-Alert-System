@@ -47,6 +47,11 @@ public class LogFileWatcher implements Runnable {
 
                         String[] parts = line.split(" ", 3);
 
+                        // Validate log format
+                        if (parts.length < 3) {
+                            System.out.println("Invalid log format: " + line);
+                            continue;
+                        }
                         LocalDateTime timestamp = LocalDateTime.parse(
                                 parts[0] + " " + parts[1],
                                 formatter
