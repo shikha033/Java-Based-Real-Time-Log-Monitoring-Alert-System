@@ -40,6 +40,11 @@ public class LogFileWatcher implements Runnable {
 
                     while ((line = file.readLine()) != null) {
 
+                        // Skip empty lines
+                        if (line.trim().isEmpty()) {
+                            continue;
+                        }
+
                         String[] parts = line.split(" ", 3);
 
                         LocalDateTime timestamp = LocalDateTime.parse(
