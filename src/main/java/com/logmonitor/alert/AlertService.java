@@ -33,6 +33,8 @@ public class AlertService {
                 LocalDateTime.now(),
                 "HIGH"
         );
+
+        triggerAlert(alert);
                     LocalDateTime.now(),
                     "HIGH"
             );
