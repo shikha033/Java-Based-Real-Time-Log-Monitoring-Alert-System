@@ -22,6 +22,17 @@ public class AlertService {
         errorCount = 0;
         windowStartTime = currentTime;
     }
+
+    if ("ERROR".equalsIgnoreCase(logEntry.getLevel())) {
+
+        errorCount++;
+
+        Alert alert = new Alert(
+                "APPLICATION_ERROR",
+                logEntry.getMessage(),
+                LocalDateTime.now(),
+                "HIGH"
+        );
                     LocalDateTime.now(),
                     "HIGH"
             );
