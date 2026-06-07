@@ -35,19 +35,29 @@ public class AlertService {
         );
 
         triggerAlert(alert);
+
+        // Generate critical alert
+        if (errorCount >= 5) {
+
+            Alert criticalAlert = new Alert(
+                    "CRITICAL_ERROR_THRESHOLD",
+                    "More than 5 ERROR logs detected within 1 minute",
                     LocalDateTime.now(),
-                    "HIGH"
+                    "CRITICAL"
             );
 
-            triggerAlert(alert);
+            triggerAlert(criticalAlert);
+
+            // Reset counter
+            errorCount = 0;
         }
     }
-
+}
     private void triggerAlert(Alert alert) {
 
         System.out.println("🚨 " + alert);
 
-        // ✅ ADD THIS
+       
         dbService.insertAlert(alert);
     }
 }
