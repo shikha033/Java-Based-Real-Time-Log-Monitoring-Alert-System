@@ -52,30 +52,25 @@ public class LogFileWatcher implements Runnable {
                             System.out.println("Invalid log format: " + line);
                             continue;
                         }
+
                         LocalDateTime timestamp = LocalDateTime.parse(
                                 parts[0] + " " + parts[1],
-                                formatter
-                        );
+                                formatter);
 
                         String level = parts[2].split(" ")[0];
 
-                        String message =
-                                parts[2].substring(level.length()).trim();
+                        String message = parts[2].substring(level.length()).trim();
 
                         LogEntry log = new LogEntry(
                                 timestamp,
                                 level,
                                 message,
-                                "Application"
-                        );
+                                "Application");
 
-                        // Print log
                         System.out.println("NEW LOG: " + log);
 
-                        // Store log in database
                         dbService.insertLog(log);
 
-                        // Process alert
                         alertService.processLog(log);
                     }
 
