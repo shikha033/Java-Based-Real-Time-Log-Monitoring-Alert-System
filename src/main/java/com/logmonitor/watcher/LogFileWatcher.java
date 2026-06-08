@@ -19,6 +19,7 @@ public class LogFileWatcher implements Runnable {
 
         try (RandomAccessFile file = new RandomAccessFile(LOG_FILE, "r")) {
 
+            System.out.println("Watching file: " + new java.io.File(LOG_FILE).getAbsolutePath());
             long filePointer = file.length(); // Start at end of file
             file.seek(filePointer);
 
@@ -52,6 +53,9 @@ public class LogFileWatcher implements Runnable {
                             System.out.println("Invalid log format: " + line);
                             continue;
                         }
+                        System.out.println("RAW LINE = [" + line + "]");
+                        System.out.println("parts[0] = [" + parts[0] + "]");
+                        System.out.println("parts[1] = [" + parts[1] + "]");
 
                         LocalDateTime timestamp = LocalDateTime.parse(
                                 parts[0] + " " + parts[1],
