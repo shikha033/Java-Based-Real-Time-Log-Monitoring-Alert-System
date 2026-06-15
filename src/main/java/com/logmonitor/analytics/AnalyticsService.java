@@ -13,7 +13,7 @@ public class AnalyticsService {
     public void showStatistics() {
 
         try (Connection conn = dbService.connect();
-             Statement stmt = conn.createStatement()) {
+                Statement stmt = conn.createStatement()) {
 
             ResultSet rs1 = stmt.executeQuery(
                     "SELECT COUNT(*) FROM logs");
