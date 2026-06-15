@@ -31,6 +31,9 @@ public class AnalyticsService {
             ResultSet infoLogs = stmt.executeQuery(
                     "SELECT COUNT(*) FROM logs WHERE level='INFO'");
 
+            if (infoLogs.next()) {
+                System.out.println("INFO Logs: " + infoLogs.getInt(1));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
