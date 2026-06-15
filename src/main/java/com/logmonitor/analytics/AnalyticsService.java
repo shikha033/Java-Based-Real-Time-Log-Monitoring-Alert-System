@@ -28,6 +28,8 @@ public class AnalyticsService {
             if (rs2.next()) {
                 System.out.println("Total Alerts: " + rs2.getInt(1));
             }
+            ResultSet infoLogs = stmt.executeQuery(
+                    "SELECT COUNT(*) FROM logs WHERE level='INFO'");
 
         } catch (Exception e) {
             e.printStackTrace();
