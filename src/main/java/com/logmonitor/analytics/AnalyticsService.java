@@ -41,6 +41,9 @@ public class AnalyticsService {
             if (warnLogs.next()) {
                 System.out.println("WARN Logs: " + warnLogs.getInt(1));
             }
+
+            ResultSet errorLogs = stmt.executeQuery(
+                    "SELECT COUNT(*) FROM logs WHERE level='ERROR'");
         } catch (Exception e) {
             e.printStackTrace();
         }
