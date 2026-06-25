@@ -8,14 +8,18 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import com.logmonitor.config.ConfigReader;
 
 public class LogFileWatcher implements Runnable {
 
-    private static final String LOG_FILE = "logs/sample-app.log";
+    // private static final String LOG_FILE = "logs/sample-app.log";
     private volatile boolean running = true;
 
     @Override
     public void run() {
+        ConfigReader config = new ConfigReader();
+
+        String LOG_FILE = config.get("log.file");
 
         try (RandomAccessFile file = new RandomAccessFile(LOG_FILE, "r")) {
 
