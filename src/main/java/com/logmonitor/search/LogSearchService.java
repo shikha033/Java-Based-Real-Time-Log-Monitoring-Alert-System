@@ -21,3 +21,6 @@ public class LogSearchService {
         "SELECT * FROM logs WHERE level=?";
 
 
+        try(Connection conn = dbService.connect();
+            PreparedStatement stmt =
+            conn.prepareStatement(sql)) {
